@@ -1,0 +1,10 @@
+---
+
+- hosts: all
+  become: true
+  tasks:
+    - name: Notify users about the shutdown
+      command: wall "System is going down for maintenance"
+
+    - name: Shutdown the server
+      command: shutdown -h now
