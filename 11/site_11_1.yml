@@ -1,5 +1,5 @@
 ---
-
+ 
 - hosts: all
   become: true
   pre_tasks:
@@ -17,6 +17,7 @@
      upgrade: dist
      update_cache: yes
     when: ansible_distribution == "Ubuntu"
+<<<<<<< HEAD
  
 - hosts: workstations
   become: true
@@ -24,7 +25,7 @@
 
   - name: install unzip
     package:
-     name: unzip
+      name: unzip
  
   - name: install terraform
     unarchive:
@@ -34,6 +35,8 @@
      mode: 0755
      owner: root
      group: root
+=======
+>>>>>>> f074498 (Install Terraform)
 
 - hosts: web_servers
   become: true
@@ -94,3 +97,23 @@
     package:
       name: samba
       state: latest
+<<<<<<< HEAD
+=======
+
+- hosts: workstations
+  become: true
+  tasks:
+
+  - name: install unzip
+    package:
+      name: unzip
+ 
+  - name: install terraform
+    unarchive:
+     src: https://releases.hashicorp.com/terraform/0.12.28/terraform_0.12.28_linux_amd64.zip
+     dest: /usr/local/bin
+     remote_src: yes
+     mode: 0755
+     owner: root
+     group: root
+>>>>>>> f074498 (Install Terraform)
