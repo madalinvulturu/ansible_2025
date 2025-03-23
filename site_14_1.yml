@@ -27,7 +27,22 @@
      user:
        name: simone
        groups: root
- 
+
+   - name: add ssh key for simone
+     tags: always
+     authorized_key:
+       user: simone
+       key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHO4u4yiriGi1eW+Ya13DpyF14icn6/ArI+oej3e1SsZ ansible"
+         
+   - name: add sudoers file for simone
+     tags: always
+     copy:
+       src: sudoer_simone
+       dest: /etc/sudoers.d/simone
+       owner: root
+       group: root
+       mode: 0440
+
  - hosts: workstations
    become: true
    tasks:
