@@ -1,5 +1,5 @@
  - name: install httpd package (CentOS)
-   tags: apache,centos,httpd
+   tags: apache,apache2,centos,httpd,ubuntu
    package:
      name:
        - "{{ apache_package_name }}"
@@ -8,12 +8,11 @@
    when: ansible_distribution == "CentOS"
 
  - name: start and enable apache service 
-   tags: apache,httpd
+   tags: apache,CentOS,httpd
    service:
      name: "{{ apache_service }}"
-     state: started 
+     state: started
      enabled: yes
-
 
  - name: change e-mail address for admin
    tags: apache,centos,httpd
